@@ -25,7 +25,7 @@ if(quizResponseOne.toUpperCase() === 'Y' || quizResponseOne.toUpperCase() === 'Y
   console.log(' Awesome! I own a window cleaning business called Apple Windows and Gutter! ');
   //Q&As getting pushed to the array. This will happend for each following quizResponseX if statement
   questionsAndAnswers.push(' Question: Does Mike own a business?');
-  questionsAndAnswers.push(' Answer: Awesome! I own a window cleaning business call Apple Windows and Gutter!');
+  questionsAndAnswers.push(' Answer: Awesome! I own a window cleaning business called Apple Windows and Gutter!');
   // added a score feature to keep track of how many the user got Correct
   score += 1;
 } else {
