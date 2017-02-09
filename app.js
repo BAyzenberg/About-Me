@@ -17,7 +17,7 @@ alert('Awesome! My name is Mike and I am currently in coding school! Please make
 var quizResponseOne = prompt('Does Mike own a business?');
 
 // Check quizResponseOne with edge case and logs something to the console.
-if(quizResponseOne.toUpperCase() === 'Y' || 'YES'){
+if(quizResponseOne.toUpperCase() === 'Y' || quizResponseOne.toUpperCase() === 'YES'){
   console.log('Awesome! I own a window cleaning busienss called Apple Windows and Gutter!');
 } else {
   console.log('Sorry, that\'s incorrect! If you want your windows or gutters cleaned then give us a call!');
@@ -27,7 +27,7 @@ if(quizResponseOne.toUpperCase() === 'Y' || 'YES'){
 var quizResponseTwo = prompt('Does Mike play PC games?');
 
 // Checks quizResponseTwo with edgecase and logs something to the console.
-if (quizResponseTwo.toUpperCase() === 'Y' || 'YES') {
+if (quizResponseTwo.toUpperCase() === 'Y' || quizResponseTwo.toUpperCase() === 'YES') {
   console.log('Yeah I do. I\'ve got like 200 games on steam over the last 10 years');
 } else {
   console.log('Incorrect! I have a S*** ton of games on steam yet I\'m on Blizzard games like 90% of the time.');
@@ -37,7 +37,7 @@ if (quizResponseTwo.toUpperCase() === 'Y' || 'YES') {
 var quizResponseThree = prompt('Does Mike have a truck?');
 
 // Checks quizResponseThree with edgecase and logs something to the console.
-if (quizResponseThree.toUpperCase() === 'Y' || 'YES') {
+if (quizResponseThree.toUpperCase() === 'Y' || quizResponseThree.toUpperCase() === 'YES') {
   console.log('Yep! Once spring gets here my crew will use it for our business!');
 } else {
   console.log('Wrong. I have small work truck that my and my crew use for my business.');
@@ -46,7 +46,7 @@ if (quizResponseThree.toUpperCase() === 'Y' || 'YES') {
 var quizResponseFour = prompt('Does Mike like MMA?');
 
 // Checks quizResponseFour with edgecase and logs something to the console.
-if (quizResponseFour.toUpperCase() === 'Y' || 'YES') {
+if (quizResponseFour.toUpperCase() === 'Y' || quizResponseFour.toUpperCase() === 'YES') {
   console.log('Yeah, but I\'m not very good. You can youTube a video of my getting my A$$ kicked in about 43 seconds hahah' );
 } else {
   console.log('Nope, I actually do like MMA! I would like to get back into it again someday!');
@@ -55,7 +55,7 @@ if (quizResponseFour.toUpperCase() === 'Y' || 'YES') {
 var quizResponseFive = prompt('Does Mike like Thai food?');
 
 // check quizResponseFive with edgecase and logs something to the console.
-if (quizResponseFive.toUpperCase() === 'Y' || 'YES') {
+if (quizResponseFive.toUpperCase() === 'Y' || quizResponseFive.toUpperCase() === 'YES') {
   console.log('Correct. More like I like Pad Thai food with my Peanut Sacue but whatever...');
 } else {
   console.log('Wrong! I f!*$ing love Thai food!');
