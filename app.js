@@ -103,16 +103,18 @@
 
 
 
-//Here we are creating the basis for our guessing game. The game will have the
+// //Question 6: Guessing game
+// Here we are creating the basis for our guessing game. The game will have the
 // following features:
-//1. Must have a set amount of tries.   2. Must indicate if the user's guess is too high or too low.
+// 1. Must have a set amount of tries.   2. Must indicate if the user's guess is too high or too low.
 
 // establishes the amount of tries that the user has
 var tries = 4;
 // keeps track of the number of guesses
 var guesses = 0;
-//favorite number ( answer)
-var favNumber = 4 ;
+//favorite number ( answer). *UPDATE* added a random number feature and logs to console.
+var jobAmount = Math.floor(Math.random() * 10 + 1 );
+console.log('This is the randomized number: ' + jobAmount);
 
 //creates a for loop that takes a user's guess and checks if it matches the favorite number.
 for (var i = 0; i < tries; i++) {
@@ -130,7 +132,7 @@ for (var i = 0; i < tries; i++) {
   numberGuess = parseInt(numberGuess, 10);
   console.log('This is the user\'s guess after trying to parsint it to a number: ' + numberGuess);
 //first If statement. Checks to see if the number matches the correct number
-  if (numberGuess === favNumber) {
+  if (numberGuess === jobAmount) {
     //if the number is guessed in 1 attempet, or more, puts out a unique non plural or plural string.
     if(guesses === 1){
       alert('Corret! You got it right in: ' + guesses + ' guess!');
@@ -155,17 +157,54 @@ for (var i = 0; i < tries; i++) {
     console.log('The user has entered either NaN, or a number out of range');
   //checks if the user is out of tries and tells them what the correct answer is.
   } else if (guesses === tries) {
-    alert('Sorry! You are out of guesses! The correct answer was: ' + favNumber + '!');
+    alert('Sorry! You are out of guesses! The correct answer was: ' + jobAmount + '!');
     console.log('User ran out of tries');
   //gives the user a hint by checking if the number is too low/
-  } else if(numberGuess < favNumber) {
+  } else if(numberGuess < jobAmount) {
     alert('Sorry! ' + numberGuess + ' is too low!');
     console.log('User guessed too low');
   //gives the user a hint by checking if the number is too high.
-  } else if (numberGuess > favNumber){
+  } else if (numberGuess > jobAmount){
     alert('Sorry! ' + numberGuess + ' is too high!');
   //catchall to help with all random cases.
   } else{
     alert('I don\'t understand your answer! Please try again! ');
+  }
+}
+
+//Question 7: Here we are required to have another guessing questions. This question has 3 requirements.
+//1. Answer's must be stored in an array. 2. The user only has 6 tries. 3. The user gets a message if they guess correct of if they run out of tries.
+var avaliableTries = 6;
+var oldCars = ['ford','chevy','toyota'];
+var userWinsFlag = false;
+var numberOfGuesses = 0;
+//This loop will keep track of how many attempts the user has and if it's less than avaliableTries, run the quiz loop again.
+for (var attempts = 0; attempts < avaliableTries; attempts++) {
+  console.log('-----ATTEMPT LOOP ITTERATION---- : ');
+  console.log('Attempts: ' + attempts);
+//takes the user's guess and transfroms it to lowercase.
+  var userGuess = prompt('Can you guess what kind of cars I have driven?');
+  userGuess = userGuess.toLowerCase();
+  console.log('This is the user\'s guess: ' + userGuess);
+//adds 1 to the number of user guesses.
+  numberOfGuesses += 1;
+//This for loops checks the user's guess to all of all the values stored in oldCars and if it finds a match, returns flips userWinsFlag to true. This will allow the user to see a correct message and break the quiz loop in case there are still more iterations left.
+  for (var i = 0; i < oldCars.length; i++) {
+    if (userGuess === oldCars[i]){
+      userWinsFlag = true;
+      break;
+    }
+  }
+//If the userWinsFlag is true, alerts that it's correct and ends the whole loop.
+  if(userWinsFlag){
+    alert('Congratulations! That\'s correct!');
+    break;
+//If the userWinsFlag is still false, then this checks to see if the user ran out of tries.
+  } else if(numberOfGuesses === avaliableTries){
+    alert('Nope! Sorry, you are out of guesses! The correct answers are: ' + oldCars + '!');
+  }
+// This lets the user know they are incorrect and the loop continues again, giving the user another chance.
+  else{
+    alert('Nope! Please try again!');
   }
 }
