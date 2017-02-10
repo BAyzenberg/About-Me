@@ -109,46 +109,62 @@
 
 // establishes the amount of tries that the user has
 var tries = 4;
-
 // keeps track of the number of guesses
 var guesses = 0;
-
 //favorite number ( answer)
-var favNumber = 1;
+var favNumber = 4 ;
 
 //creates a for loop that takes a user's guess and checks if it matches the favorite number.
 for (var i = 0; i < tries; i++) {
 //prompts user for a guess.
-  var numberGuess = prompt('Guess a number between 1 and 10');
+  console.log('------ NEW ITERATION ------ ');
+  console.log('This is the current number of tries: ' + tries + '...');
+  console.log('tries should always be 4 here.');
+  var numberGuess = prompt('How many jobs have I had?');
 // adds a number to guesses
-  guesses = i + 1;
+  console.log('This is the current number of guesses before the loop adds to guesses: ' + guesses);
+  guesses += 1;
+  console.log('This is the current number of guesses after the loops adds to guesses' + guesses);
 // parses the user's guess into a number data type and stores it into itself.
+  console.log('This is the user\'s guess before trying to parsint it to a number: ' + numberGuess);
   numberGuess = parseInt(numberGuess, 10);
-
+  console.log('This is the user\'s guess after trying to parsint it to a number: ' + numberGuess);
 //first If statement. Checks to see if the number matches the correct number
   if (numberGuess === favNumber) {
     //if the number is guessed in 1 attempet, or more, puts out a unique non plural or plural string.
     if(guesses === 1){
-      alert('Corret! You found the number in: ' + guesses + ' guess!');
+      alert('Corret! You got it right in: ' + guesses + ' guess!');
+      console.log('User guessed correctly and in no more than 1 guess');
       break;
     } else {
-      alert('Corret! You found the number in: ' + guesses + ' guesses!');
+      alert('Corret! You got it right in: ' + guesses + ' guesses!');
+      console.log('User guess correctly but in at least 2 or more guesses');
       break;}
-  //first elseif checks if the number is actually a number, or is higher or lower that the range avaliable.
+  //first elseif checks if the number is a valid number by checking if it is actually a number, or is higher or lower that the range avaliable.
   } else if (isNaN(numberGuess) || numberGuess > 10 || numberGuess < 1 ) {
-    // since this isn't a legitimate guess, we subtract 1 from guesses;
+  // since this isn't a legitimate guess, we subtract 1 from guesses and log both before and after;
+    console.log('This is the variable "guesses" before the vaild number check: ' + guesses);
     guesses -= 1;
-    // since this isn't a legitime guess, we subtract 1 from the iteration so that it doesn't count as a try
+    console.log('This is the variable "guesses" after the valid number check: ' + guesses);
+  // since this isn't a legitime guess, we subtract 1 from the iteration so that it doesn't count as a try, and log both before and after.
+    console.log('This is the variable "i" before the valid number check: ' + i);
     i--;
-    // alerts the user to enter a legitimate answer.
+    console.log('This is the variable "i" after the valid number check: ' + i);
+  // alerts the user to enter a legitimate answer.
     alert('Please enter a valid number between 1-10!');
-    // gives the user a hint by checking if the number is too low.
-  } else if (numberGuess < favNumber) {
+    console.log('The user has entered either NaN, or a number out of range');
+  //checks if the user is out of tries and tells them what the correct answer is.
+  } else if (guesses === tries) {
+    alert('Sorry! You are out of guesses! The correct answer was: ' + favNumber + '!');
+    console.log('User ran out of tries');
+  //gives the user a hint by checking if the number is too low/
+  } else if(numberGuess < favNumber) {
     alert('Sorry! ' + numberGuess + ' is too low!');
-    //gives the user a hint by checking if the number is too high.
+    console.log('User guessed too low');
+  //gives the user a hint by checking if the number is too high.
   } else if (numberGuess > favNumber){
     alert('Sorry! ' + numberGuess + ' is too high!');
-    //catchall to help with all random cases.
+  //catchall to help with all random cases.
   } else{
     alert('I don\'t understand your answer! Please try again! ');
   }
