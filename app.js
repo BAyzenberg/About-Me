@@ -131,8 +131,8 @@ var wrongFive = 'Wrong! I f!*$ing love Thai food!';
 //all of the arrays we will use to evaluate our questions and provide feed back.
 var quizQuests = [questOne,questTwo,questThree,questFour,questFive];
 var answerQuests = [answerOne,answerTwo,answerThree,answerFour,answerFive];
-var quizCorrects = [correctOne,correctTwo,correctThree,correctFour,correctFive];
-var quizWrongs = [wrongOne,wrongTwo,wrongThree,wrongFour,wrongFive];
+var quizCorrectFeedbacks = [correctOne,correctTwo,correctThree,correctFour,correctFive];
+var quizWrongFeedbacks = [wrongOne,wrongTwo,wrongThree,wrongFour,wrongFive];
 
 // Grabs the user's confirm and stores it in confirmQuiz
 var confirmQuiz = confirm('Hello, would you like to take a quiz?');
@@ -145,17 +145,54 @@ console.log('current value of confirmQuiz: ' + confirmQuiz);
 //This do-while loop will check if a user has confirmed or cancelled. This will then either ask them repeatedly until they say yes, or congradulate them and move on.
 do {
   if (confirmQuiz) {
-    console.log('Awesome, Lets get started!');
+    console.log('confirmQuiz:' + confirmQuiz);
     startQuizFlag = true;
   } else {
     console.log('MuwuahahahAHAHAHAH');
+    console.log('confirmQuiz: ' + confirmQuiz);
     confirmQuiz = confirm('I\'m sorry, I didn\'t catch that. Would you like to play a game?');
   }
 } while (!startQuizFlag);
 
 // lets the user know some basic info about me and sets expectations on how to answer questions
 alert('Awesome! My name is Mike and I am currently in coding school! Please make sure to answer the following questions with "Y" or "N" when possible. Thanks!');
-
+//Starts the for loop that will iterate up to the quizQuest array length, and use that index number to refernce all other ordered data in each other array.
+for (var questionNum = 0; questionNum < quizQuests.length; questionNum++) {
+  console.log('------QUIZ ITERATIONS START-----');
+  console.log('QuestionNum: ' + questionNum);
+  console.log('Score: ' + score);
+  //Prompts the user for the first question in the quizQuests array.
+  var userQuizGuess = prompt(quizQuests[questionNum]);
+  //checks if the user's answer is null and forces them to input a correct response. If it succeeds then it transforms the answer to uppercase.
+  if(userQuizGuess !== null){
+    userQuizGuess = userQuizGuess.toUpperCase();
+  //checks if the user entered something other than a valid response and either moves them on, or alerts them to the problem and removes and iteration in order to repeat a question.
+    if (userQuizGuess !== 'Y' && userQuizGuess !== 'N'){
+      alert('Please answer with a "Y" for yes, or an "N" for no!');
+    //Removes iteration to repeat questionNum
+      console.log('QuestionNum before restarting: ' + questionNum);
+      questionNum -= 1;
+      console.log('QuestionNum after restarting: ' + questionNum);
+    //if the user is correct, then they get corret feedback and gain a point. If not, They get the wrong feedback and don't gain a point. ( No repeating the question.)
+    } else if(userQuizGuess === answerQuests[questionNum]){
+      alert(quizCorrectFeedbacks[questionNum]);
+      console.log('Score before adding: ' + score);
+      score += 1;
+      console.log('Score after adding: ' + score);
+    } else {
+      alert(quizWrongFeedbacks[questionNum]);
+    }
+  //This is where the null check will ask the user to input a valid answer if they try to click cancel. Also deducts an iteration to repeat the question.
+  } else {
+    alert('Please answer with a "Y" for yes, or an "N" for no!');
+    console.log('QuestionNum for null check before: ' + questionNum);
+    questionNum -= 1;
+    console.log('QuestionNum for null check after: ' + questionNum);
+  }
+}
+// adds the total possible score ( based of the number of items in the question's array) and concats it to the end of the score to give them a "score out of total possible"
+score += '/' + quizQuests.length;
+console.log('Score: ' + score);
 // // //Question 6: Guessing game
 // // Here we are creating the basis for our guessing game. The game will have the
 // // following features:
