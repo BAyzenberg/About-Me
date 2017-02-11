@@ -202,7 +202,6 @@ function guessingGame(){
   }
 
 }
-// This do-while loop will check if a user has confirmed or cancelled. This will then either ask them repeatedly until they say yes, or congradulate them and move on.
 
 // Function for Quiz guess
 function carsGuessing() {
@@ -257,6 +256,7 @@ function carsGuessing() {
   }
 }
 
+// This do-while loop will check if a user has confirmed or cancelled. This will then either ask them repeatedly until they say yes, or congradulate them and move on.
 do {
   if (confirmQuiz) {
 
